@@ -13,9 +13,9 @@ const navItems = [
     {href:"/recipes",title:'recipes'},
     {href:"/users",title:'users'}];
 
-function Header() {
+function Header(props) {
     const path=usePathname();
-//   const { window } = props;
+  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -70,9 +70,9 @@ function Header() {
                 const activestyle={textDecoration:path===item.href?"underline overline" : "none"}
             return (
 
-              <Button key={item} sx={{ color: '#fff' }}>
+              <Button key={item.href} sx={{ color: '#fff' }}>
               <Link href={item.href} style={{ ...activestyle, color: "white" }}>
-                {item}
+                {item.title}
                 </Link>
               </Button>
           
