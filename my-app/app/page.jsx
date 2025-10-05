@@ -1,15 +1,12 @@
 import React from 'react'
-import Image from "next/image";
-// import { getData} from "@/utils/getData"
-export default function Home() {
+import { getData} from "@/utils/getData"
+export default async function Home() {
+  const usersData = await getData("https://dummyjson.com/users");
+  const postsData = await getData("https://dummyjson.com/posts");
+  const recipesData = await getData("https://dummyjson.com/recipes");
   return (
 <div>
-  
-  const users=agetData("https://dummyjson.com/users");
-  const posts=getData("https://dummyjson.com/posts');
-  const recipes=getData("https://dummyjson.com/recipes");
-</div>
 
-  
+</div>
   )
 }
