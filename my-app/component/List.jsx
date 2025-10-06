@@ -1,15 +1,19 @@
+"use client"
 import * as React from 'react';
-import {List,ListItem,ListItemButton,ListItemIcon,ListItemText,Checkbox,IconButton,CommentIcon} from '@mui/material';
+import {List,ListItem,ListItemButton,ListItemText,IconButton,CommentIcon} from '@mui/material';
 
-export default function List({items}){
+export default function ListI({items}){
+   if (!items || items.length === 0) {
+    return <p>No users found</p>;
+  }
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+    const currentIndex = checked.indexOf(value.id);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(value.firstName);
     } else {
       newChecked.splice(currentIndex, 1);
     }
@@ -18,13 +22,14 @@ export default function List({items}){
   };
 
   return (
+    
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {items.map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
+        const labelId = `checkbox-list-label-${value.id}`;
 
         return (
           <ListItem
-            key={value}
+            key={value.id}
             secondaryAction={
               <IconButton edge="end" aria-label="comments">
                 <CommentIcon />
@@ -32,8 +37,8 @@ export default function List({items}){
             }
             disablePadding
           >
-            <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+            <ListItemButton role={undefined} onClick={handleToggle(value.id)} dense>
+              <ListItemText id={labelId} primary={`Line item ${value.id + 1}`} />
             </ListItemButton>
           </ListItem>
         );
