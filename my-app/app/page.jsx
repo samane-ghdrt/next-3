@@ -10,6 +10,8 @@ export default async function Home() {
   return (
 <div>
 <ListI items={usersData?.users || []}/>
+<ListI items={postsData?.users || []}/>
+<ListI items={recipesData?.users || []}/>
 </div>
   )
 }
