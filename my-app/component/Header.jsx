@@ -23,7 +23,7 @@ function Header(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', display:"flex", mb:'4rem'}}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>

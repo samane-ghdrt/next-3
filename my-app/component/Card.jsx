@@ -2,9 +2,13 @@ import * as React from 'react';
 import { Card,CardContent,CardMedia,Typography,Button,CardActionArea,CardActions} from '@mui/material';
 
 
-export default function MultiActionAreaCard({member}) {
+export default function MultiActionAreaCard({members}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Grid container spacing={2}>
+    {members.map((member)=>{
+      <Grid item xs={12} sm={6} md={4} key={member.id}>
+   <Card sx={{ maxWidth: 345 }}>
+      
       <CardActionArea>
         <CardMedia
           component="img"
@@ -27,6 +31,10 @@ export default function MultiActionAreaCard({member}) {
           Share
         </Button>
       </CardActions>
+    
     </Card>
+    </Grid>
+ })}
+ </Grid>
   );
 }
