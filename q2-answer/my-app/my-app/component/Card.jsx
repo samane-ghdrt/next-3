@@ -6,7 +6,7 @@ import { Card,CardContent,CardMedia,Typography,Button,CardActionArea,CardActions
 import { useRouter } from 'next/navigation';
 
 
-export default function MultiActionAreaCard({members,rout}) {
+export default function MultiActionAreaCard({members}) {
 
   const router=useRouter();
   return (
@@ -19,22 +19,20 @@ export default function MultiActionAreaCard({members,rout}) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="70"
-          width="70"
+          maxWidth="5rem"
+          maxHeight="5rem"
+          
           image={member.image}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {member.maidenName}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-           {member.email}
+            {member.firstname}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={()=> router.push(`${rout}/${member.id}`)}>
+        <Button size="small" color="primary" onClick={()=> router.push(`/${member.id}`)}>
           Details
         </Button>
       </CardActions>
