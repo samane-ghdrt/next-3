@@ -7,6 +7,6 @@ export default async function page() {
  
    return (
      
-     <MultiActionAreaCard members={usersData?.recipes || []}> </MultiActionAreaCard>
+     <MultiActionAreaCard members={usersData?.recipes || []} rout={"recipes"}> </MultiActionAreaCard>
    )
 }

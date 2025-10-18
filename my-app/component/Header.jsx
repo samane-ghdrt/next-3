@@ -4,6 +4,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {AppBar, Box, Button, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography} from '@mui/material';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 
 const drawerWidth = 240;
@@ -14,6 +16,7 @@ const navItems = [
     {href:"/users",title:'users'}];
 
 function Header(props) {
+ const{theme,setTheme}= useTheme();
     const path=usePathname();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -21,7 +24,9 @@ function Header(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+const toggleTheme=()=>{
+  setTheme(theme==="dark"?"light":"dark");
+}
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', display:"flex", mb:'4rem'}}>
       <Typography variant="h6" sx={{ my: 2 }}>
@@ -39,6 +44,7 @@ function Header(props) {
           </Link>
         ))}
       </List>
+      <Button onClick={toggleTheme} sx={{ mt: 2 }}>  {theme === "dark" ? "Light Mode ☀️" : "Dark Mode 🌙"}</Button>
     </Box>
   );
 
@@ -78,6 +84,9 @@ function Header(props) {
           
             )}
             )}
+             <IconButton color="inherit" onClick={toggleTheme}>
+              {theme === "dark" ? <LightMode /> : <DarkMode />}
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>

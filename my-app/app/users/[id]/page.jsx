@@ -1,35 +1,34 @@
 
 import { getData } from '@/utils/getData';
-import { Card, CardActionArea, CardContent, Grid, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react'
 
 export default async function page({params}) {
-const usersData = await getData(`https://dummyjson.com/posts/${params.id}`);
+const usersData = await getData(`https://dummyjson.com/users/${params.id}`);
  
    return (
     
      <Grid container spacing={2}>
        <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        {/* <CardMedia
+        <CardMedia
           component="img"
           height="70"
           width="70"
-          image={usersData.users.id.image}
+          image={usersData.image}
           alt="green iguana"
-        /> */}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {usersData.title}
+            {usersData.name}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
            {usersData.body}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </CardActionArea>
     
     </Card>
     </Grid>
-
-   )
-}
+      )
+    }

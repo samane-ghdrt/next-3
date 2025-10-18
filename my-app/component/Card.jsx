@@ -6,7 +6,7 @@ import { Card,CardContent,CardMedia,Typography,Button,CardActionArea,CardActions
 import { useRouter } from 'next/navigation';
 
 
-export default function MultiActionAreaCard({members}) {
+export default function MultiActionAreaCard({members,rout}) {
 
   const router=useRouter();
   return (
@@ -34,7 +34,7 @@ export default function MultiActionAreaCard({members}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={router.push(`/${member.id}`)}>
+        <Button size="small" color="primary" onClick={()=> router.push(`${rout}/${member.id}`)}>
           Details
         </Button>
       </CardActions>
